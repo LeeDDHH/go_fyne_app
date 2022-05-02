@@ -4,6 +4,7 @@ import (
 	"strconv"
 
 	"fyne.io/fyne/app"
+	"fyne.io/fyne/theme"
 	"fyne.io/fyne/widget"
 )
 
@@ -20,6 +21,9 @@ func main() {
 	w := a.NewWindow("Hello")
 	l := widget.NewLabel("Hello Fyne")
 	e := widget.NewEntry()
+	darkTheme := theme.DarkTheme()
+	lightTheme := theme.LightTheme()
+	currentTheme := darkTheme
 
 	e.SetText("0")
 	eCulculate := func() {
@@ -28,10 +32,23 @@ func main() {
 	}
 	b := widget.NewButton("Click", eCulculate)
 
+	changeTheme := func() {
+		changedTheme := darkTheme
+		if currentTheme == changedTheme {
+			currentTheme = lightTheme
+			changedTheme = lightTheme
+		} else {
+			currentTheme = darkTheme
+		}
+		a.Settings().SetTheme(changedTheme)
+	}
+	changeThemeButton := widget.NewButton("Change Theme", changeTheme)
+
 	widgetSet := widget.NewVBox(
 		l,
 		e,
 		b,
+		changeThemeButton,
 	)
 	w.SetContent(widgetSet)
 
