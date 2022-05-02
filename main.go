@@ -9,7 +9,12 @@ func main() {
 	a := app.New()
 
 	w := a.NewWindow("Hello")
-	w.SetContent(widget.NewLabel("Hello Fyne"))
+	// widgetSet := widget.NewVBox(
+	widgetSet := widget.NewHBox(
+		widget.NewLabel("Hello Fyne"),
+		widget.NewLabel("second text"),
+	)
+	w.SetContent(widgetSet)
 
 	w.ShowAndRun()
 }
