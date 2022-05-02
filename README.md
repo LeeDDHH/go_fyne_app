@@ -8,6 +8,8 @@
   - [Go のモジュール管理【バージョン 1.17 改訂版】](https://zenn.dev/spiegel/articles/20210223-go-module-aware-mode)
   - `go env -w GO111MODULE=on`
 - `go mod init go_fyne_app` で Go モジュールモードの前提
+- go の依存関係解決
+  - [Go 言語の依存モジュール管理ツール Modules の使い方 - Qiita](https://qiita.com/uchiko/items/64fb3020dd64cf211d4e)
 
 ---
 
@@ -25,11 +27,13 @@
 
 ```bash
 go get fyne.io/fyne
+go get
 ```
 
 - インストールしたら、 `GOPATH` 配下の `pkg/mod/fyne.io` が生成される
   - 中身は `fyne` パッケージ
 - はじめてインストールすると、 `go.sum` というファイルがプロジェクトに追加される
+- `go get` をすることで、依存モジュールの追加をする
 
 ### ビルド
 
